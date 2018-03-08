@@ -56,6 +56,14 @@ Nothing here.
 Just typical `ndk-build`.
 TODO: describe what it is.
 
+### Vita
+
+WARNING: The Vita port is in its early stages. Expect glitches and crashes.
+
+1. Ensure that you have VitaSDK installed and in your PATH.
+2. `make -f Makefile.vita`
+3. Copy `client.suprx` to `valve/cl_dlls` and `server.suprx` to `valve/dlls`.
+
 ### Building GoldSource-compatible libraries
 
 To enable building the goldsource compatible client library add GOLDSOURCE_SUPPORT flag when calling cmake:
