@@ -1,0 +1,13 @@
+# Binaries
+*.o
+*.so
+*/*.o
+*/*/*.o
+*.a
+*.framework
+*.exe
+android/gen
+android/bin/
+android/libs
+android/obj
+build/
