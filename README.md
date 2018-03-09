@@ -1,4 +1,4 @@
-# Half-Life SDK for Xash3D [![Build Status](https://travis-ci.org/FWGS/hlsdk-xash3d.svg)](https://travis-ci.org/FWGS/hlsdk-xash3d)
+# Half-Life SDK for Xash3D [![Build Status](https://travis-ci.org/FWGS/hlsdk-xash3d.svg)](https://travis-ci.org/FWGS/hlsdk-xash3d) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/FWGS/hlsdk-xash3d?svg=true)](https://ci.appveyor.com/project/a1batross/hlsdk-xash3d)
 
 Half-Life SDK for Xash3D & GoldSource with some fixes.
 
@@ -31,7 +31,7 @@ These scripts also can be ran via wine:
 
 The libraries built this way are always GoldSource compatible.
 
-There're dsp projects for MVS 6 in `cl_dll` and `dlls` directories, but we don't keep them up-to-date. You're free to adapt them for yourself and try to import into the newer MVS versions.
+There're dsp projects for Visual Studio 6 in `cl_dll` and `dlls` directories, but we don't keep them up-to-date. You're free to adapt them for yourself and try to import into the newer Visual Studio versions.
 
 #### Using mingw
 
@@ -44,7 +44,7 @@ TODO
 
 ### OS X
 
-TODO
+Nothing here.
 
 ### FreeBSD
 
@@ -55,6 +55,14 @@ TODO
 
 Just typical `ndk-build`.
 TODO: describe what it is.
+
+### Vita
+
+WARNING: The Vita port is in its early stages. Expect glitches and crashes.
+
+1. Ensure that you have VitaSDK installed and in your PATH.
+2. `make -f Makefile.vita`
+3. Copy `client.suprx` to `valve/cl_dlls` and `server.suprx` to `valve/dlls`.
 
 ### Building GoldSource-compatible libraries
 
