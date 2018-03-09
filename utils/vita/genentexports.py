@@ -41,7 +41,7 @@ sv_files = chain(
 )
 
 for fname in sv_files:
-    with open(fname) as f:
+    with open(fname, errors='replace') as f:
         get_exports(sv_exports, f, fname)
 dedup(sv_exports)
 
