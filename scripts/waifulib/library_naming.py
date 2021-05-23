@@ -51,7 +51,8 @@ DEFINES = [
 'XASH_WIN64',
 'XASH_X86',
 'XASH_DOS4GW',
-'XASH_POSIX'
+'XASH_POSIX',
+'XASH_NSWITCH',
 ]
 
 def configure(conf):
@@ -79,6 +80,8 @@ def configure(conf):
 		buildos = "emscripten"
 	elif conf.env.XASH_DOS4GW:
 		buildos = "dos4gw" # unused, just in case
+	elif conf.env.XASH_NSWITCH:
+		buildos = "nswitch"
 	else:
 		conf.fatal("Place your operating system name in build.h and library_naming.py!\n"
 			"If this is a mistake, try to fix conditions above and report a bug")
@@ -119,7 +122,7 @@ def configure(conf):
 	else:
 		raise conf.fatal("Place your architecture name in build.h and library_naming.py!\n"
 			"If this is a mistake, try to fix conditions above and report a bug")
-	
+
 	conf.env.revert()
 	
 	if buildos == 'android':
