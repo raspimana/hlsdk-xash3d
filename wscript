@@ -110,6 +110,8 @@ def configure(conf):
 	if conf.env.DEST_OS == 'android':
 		conf.options.GOLDSRC = False
 		conf.env.SERVER_NAME = 'server' # can't be any other name, until specified
+	elif conf.env.DEST_OS == 'switch':
+		conf.options.GOLDSRC = False
 	
 	conf.env.MAGX = conf.options.MAGX
 	if conf.options.MAGX:
@@ -238,6 +240,13 @@ def configure(conf):
 		cflags += conf.filter_cflags(compiler_optional_flags + c_compiler_optional_flags, cflags)
 		cxxflags += conf.filter_cxxflags(compiler_optional_flags, cflags)
 
+	# on the Switch, allow undefined symbols by default, which is needed for libsolder to work
+	# additionally, shared libs are linked without libc
+	if conf.env.DEST_OS == 'nswitch':
+		linkflags.remove('-Wl,--no-undefined')
+		conf.env.append_unique('LINKFLAGS_cshlib', ['-nostdlib', '-nostartfiles'])
+		conf.env.append_unique('LINKFLAGS_cxxshlib', ['-nostdlib', '-nostartfiles'])
+
 	conf.env.append_unique('CFLAGS', cflags)
 	conf.env.append_unique('CXXFLAGS', cxxflags)
 	conf.env.append_unique('LINKFLAGS', linkflags)
@@ -265,7 +274,7 @@ def configure(conf):
 		conf.env.append_unique('CXXFLAGS', ['-Wno-invalid-offsetof', '-fno-rtti', '-fno-exceptions'])
 
 	# strip lib from pattern
-	if conf.env.DEST_OS in ['linux', 'darwin']:
+	if conf.env.DEST_OS in ['linux', 'darwin', 'nswitch']:
 		if conf.env.cshlib_PATTERN.startswith('lib'):
 			conf.env.cshlib_PATTERN = conf.env.cshlib_PATTERN[3:]
 		if conf.env.cxxshlib_PATTERN.startswith('lib'):
