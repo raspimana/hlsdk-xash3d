@@ -28,9 +28,9 @@ before_build:
   - cmake -G "%GENERATOR_NAME%"
 
 artifacts:
-- path: c:\projects\xash\hlsdk-xash3d\cl_dll\
+- path: cl_dll
   name: CLIENT
-- path: c:\projects\xash\hlsdk-xash3d\build\
+- path: build
   name: BUILD
-- path: c:\projects\xash\hlsdk-xash3d\dlls\
+- path: dlls
   name: SERVER
