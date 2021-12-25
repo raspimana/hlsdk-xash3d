@@ -26,3 +26,11 @@ configuration:
 before_build:
   - git submodule update --init --recursive
   - cmake -G "%GENERATOR_NAME%"
+
+artifacts:
+- path: c:\projects\xash\hlsdk-xash3d\cl_dll
+  name: CLIENT
+- path: c:\projects\xash\hlsdk-xash3d\build
+  name: BUILD
+- path: c:\projects\xash\hlsdk-xash3d\dlls
+  name: SERVER
